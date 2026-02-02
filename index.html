@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Be My Valentine 💖</title>
+
+<style>
+body {
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg,#ff9a9e,#fad0c4);
+  overflow: hidden;
+  text-align: center;
+}
+
+h1 { font-size: 2.4rem; margin-bottom: 30px; }
+
+.buttons {
+  position: relative;
+  width: 300px;
+  height: 140px;
+}
+
+button {
+  position: absolute;
+  font-size: 1.1rem;
+  padding: 12px 22px;
+  border: none;
+  border-radius: 10px;
+}
+
+#yes {
+  background:#ff4d6d;
+  color:white;
+  left:40px;
+  top:50px;
+}
+
+#no {
+  background:#6c757d;
+  color:white;
+  left:170px;
+  top:50px;
+}
+
+.heart {
+  position: fixed;
+  bottom: -20px;
+  animation: floatUp 4s linear forwards;
+}
+
+@keyframes floatUp {
+  to {
+    transform: translateY(-110vh);
+    opacity: 0;
+  }
+}
+
+img {
+  max-width: 80%;
+  border-radius: 20px;
+  margin-top: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Will you be my Valentine? 💘</h1>
+
+<div class="buttons">
+  <button id="yes" onclick="yes()">YES 💕</button>
+  <button id="no" onmouseover="run()">NO 😅</button>
+</div>
+
+<script>
+function run() {
+  const no = document.getElementById("no");
+  no.style.left = Math.random()*200 + "px";
+  no.style.top  = Math.random()*100 + "px";
+}
+
+function yes() {
+  document.body.innerHTML = `
+    <h1>YAYYYYY 🥹💖</h1>
+    <h2>I knew you’d say yes</h2>
+    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4QCMRXhpZgAATU0AKgAAAAgABQESAAMAAAABAAEAAAEaAAUAAAABAAAASgEbAAUAAAABAAAAUgEoAAMAAAABAAIAAIdpAAQAAAABAAAAWgAAAAAAAABIAAAAAQAAAEgAAAABAAOgAQADAAAAAQABAACgAgAEAAAAAQAAAhKgAwAEAAAAAQAAAhIAAAAAAABIAAAAAQAAAEgAAAAB/9sAQwACAQEBAQECAQEBAgICAgICAgMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAz/wAALCAAaABoBAREA/8QAFQABAQAAAAAAAAAAAAAAAAAAAAf/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCkA//Z">
+  `;
+  setInterval(heart, 250);
+}
+
+function heart() {
+  const h = document.createElement("div");
+  h.className = "heart";
+  h.innerHTML = "💖";
+  h.style.left = Math.random()*100 + "vw";
+  h.style.fontSize = 20 + Math.random()*20 + "px";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),4000);
+}
+</script>
+
+</body>
+</html>
